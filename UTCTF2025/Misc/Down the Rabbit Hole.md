@@ -122,7 +122,7 @@ The password is **Bdm@9D/]J^7@9[D(**
 I tried steganography techniques on image.jpg, but found nothing, so let's move on from it.
 
 Upon discovering the .git folder, I began investigating the repository to understand its structure and contents. I knew that Git repositories store all their data in the .git/objects directory using a content-addressable filesystem.
-# Step 1: Exploring Git Objects
+## Step 1: Exploring Git Objects
 I first navigated to the objects directory and found an object file:
 ```
 arsen@archlinux ~/C/U/M/D/test (master)> cd .git/objects/
@@ -137,7 +137,7 @@ When trying to view this object, I encountered an error:
 arsen@archlinux ~/C/U/M/D/t/.g/o/01 (GIT_DIR!)> git cat-file -p 278d6de291f04d0b47c5598d16b16844d2771e
 fatal: Not a valid object name 278d6de291f04d0b47c5598d16b16844d2771e
 ```
-#Step 2: Understanding Git Object Structure
+## Step 2: Understanding Git Object Structure
 I realized the issue was related to how Git organizes objects. The first two characters of the hash represent the directory, and the rest is the filename. So the full hash should be:
 *01278d6de291f04d0b47c5598d16b16844d2771e*:
 ```
@@ -181,7 +181,7 @@ Enter passphrase:
 steghide: could not extract any data with that passphrase!
 
 ```
-There is only 1 unused string left so let's try with it
+There is only 1 unused string left, let's try with it
 **Coq\IP1o7hr#yyW7**
 ```
 arsen@archlinux ~/C/U/M/D/t/.g/o/01 (GIT_DIR!)> steghide info extracted_image.jpg -p "Coq\IP1o7hr#yyW7"
