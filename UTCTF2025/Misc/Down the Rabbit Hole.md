@@ -10,7 +10,7 @@ This was a very interesting and unusual task, offering great variety and complex
 Searching through channels and users ("utflag{..." and messages from Sasha) in the discord chat did not bring anything useful, which was actually expected judging by the number of people who solved this task.
 
 Further OSINT outside Discord would also not bring anything:
-==Note: The initial scope for this challenge is just the Discord server itself, and not any persons or individuals. Unofficial content is not in scope.==
+***Note: The initial scope for this challenge is just the Discord server itself, and not any persons or individuals. Unofficial content is not in scope***
 
 And also these 2 more messages from admin led to the idea that we should think in a different direction:
 ![image](https://github.com/user-attachments/assets/c4bc27ce-b62e-4c0a-8e18-959c103a234c)
