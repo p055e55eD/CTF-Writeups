@@ -182,6 +182,7 @@ steghide: could not extract any data with that passphrase!
 
 ```
 There is only 1 unused string left, let's try with it:
+
 **Coq\IP1o7hr#yyW7**
 ```
 arsen@archlinux ~/C/U/M/D/t/.g/o/01 (GIT_DIR!)> steghide info extracted_image.jpg -p "Coq\IP1o7hr#yyW7"
