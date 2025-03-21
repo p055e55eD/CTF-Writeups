@@ -45,7 +45,8 @@ Changes can be noticed immediately(you might need to restart discord once more):
 And finally an interesting finding! **admin-only** channel:
 ![image](https://github.com/user-attachments/assets/1de59e84-b122-4d78-a33e-c303743ac602)
 
-Write down the password somewhere and open the link.
+Write down the password somewhere and visit the link.
+
 [https://docs.google.com/document/d/1cgFhoHKLEbbJlu1SX4gCfFI4CGEEoEisiFq1CW-TKUo/edit?tab=t.0]
 
 ---  
@@ -98,9 +99,12 @@ Coq\IP1o7hr#yyW7
 WPPVY-9YgdHlRZjIWlYWnyST4lqZiILaA_tpGt3bqVU
 ```
 
-Now let's visit the link, It takes us to a [GitHub gists](https://gist.github.com/umbresp/5275f23f615c9bdcb21c463ac4b87c3c) page.
+Now let's visit the link, It takes us to a [GitHub gists](https://gist.github.com/umbresp/5275f23f615c9bdcb21c463ac4b87c3c) page:
 
-Click revisions and decode the base64.
+![image](https://github.com/user-attachments/assets/35f20e92-8b8a-4d60-96be-88feebd06329)
+
+
+Click revisions and decode the base64:
 ![image](https://github.com/user-attachments/assets/5d5b9894-016c-4999-a9bc-de8e4603bf6c)
 ![image](https://github.com/user-attachments/assets/41612e50-4b70-4c87-9f86-fc86bbaf3ffa)
 [https://mega.nz/file/HHgR1RRL]
@@ -119,7 +123,7 @@ The password is **Bdm@9D/]J^7@9[D(**
 
 ![image](https://github.com/user-attachments/assets/03d9bb5a-d5ac-401e-b689-6858a75dc52f)
 
-I tried steganography techniques on image.jpg, but found nothing, so let's move on from it.
+I tried steganography techniques on image.jpg, but found nothing, so let's move on from it:
 
 Upon discovering the .git folder, I began investigating the repository to understand its structure and contents. I knew that Git repositories store all their data in the .git/objects directory using a content-addressable filesystem.
 ## Step 1: Exploring Git Objects
@@ -138,7 +142,7 @@ arsen@archlinux ~/DTRH/.git/objects/01 (GIT_DIR!)> git cat-file -p 278d6de291f04
 fatal: Not a valid object name 278d6de291f04d0b47c5598d16b16844d2771e
 ```
 ## Step 2: Understanding Git Object Structure
-I realized the issue was related to how Git organizes objects. The first two characters of the hash represent the directory, and the rest is the filename. So the full hash should be:
+I realized the issue was related to how Git organizes objects. The first two characters of the hash represent the directory, and the rest is the filename. So the full hash should be
 *01278d6de291f04d0b47c5598d16b16844d2771e*:
 ```
 arsen@archlinux ~/DTRH/.git/objects/01 (GIT_DIR!) [128]> git cat-file -p 01278d6de291f04d0b47c5598d16b16844d2771e
@@ -170,7 +174,7 @@ Line Count                      : 1
 Word Count                      : 4
 
 ```
-There is something found, hooray!! Lets extract it.
+There is something found, hooray!! Lets extract it:
 ```
 arsen@archlinux ~/DTRH/.git/objects/01 (GIT_DIR!)> steghide info extracted_image.jpg
 "extracted_image.jpg":
