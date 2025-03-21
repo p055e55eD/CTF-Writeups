@@ -99,7 +99,7 @@ Coq\IP1o7hr#yyW7
 WPPVY-9YgdHlRZjIWlYWnyST4lqZiILaA_tpGt3bqVU
 ```
 
-Now let's visit the link, It takes us to a [GitHub gists](https://gist.github.com/umbresp/5275f23f615c9bdcb21c463ac4b87c3c) page:
+Now let's visit the link, It takes us to a [GitHub gist](https://gist.github.com/umbresp/5275f23f615c9bdcb21c463ac4b87c3c) page:
 
 ![image](https://github.com/user-attachments/assets/35f20e92-8b8a-4d60-96be-88feebd06329)
 
