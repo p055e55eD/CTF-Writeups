@@ -125,34 +125,34 @@ Upon discovering the .git folder, I began investigating the repository to unders
 ## Step 1: Exploring Git Objects
 I first navigated to the objects directory and found an object file:
 ```
-arsen@archlinux ~/C/U/M/D/test (master)> cd .git/objects/
-arsen@archlinux ~/C/U/M/D/t/.g/objects (GIT_DIR!)> ls
+arsen@archlinux ~/DTRH (master)> cd .git/objects/
+arsen@archlinux ~/DTRH/.git/objects (GIT_DIR!)> ls
 01/  0a/  30/  58/  5c/  8f/  extracted_image.jpg  info/  pack/
-arsen@archlinux ~/C/U/M/D/t/.g/objects (GIT_DIR!)> cd 01/
-arsen@archlinux ~/C/U/M/D/t/.g/o/01 (GIT_DIR!) [127]> ls
+arsen@archlinux ~/DTRH/.git/objects (GIT_DIR!)> cd 01/
+arsen@archlinux ~/DTRH/.git/objects/01 (GIT_DIR!) [127]> ls
 278d6de291f04d0b47c5598d16b16844d2771e
 ```
 When trying to view this object, I encountered an error:
 ```
-arsen@archlinux ~/C/U/M/D/t/.g/o/01 (GIT_DIR!)> git cat-file -p 278d6de291f04d0b47c5598d16b16844d2771e
+arsen@archlinux ~/DTRH/.git/objects/01 (GIT_DIR!)> git cat-file -p 278d6de291f04d0b47c5598d16b16844d2771e
 fatal: Not a valid object name 278d6de291f04d0b47c5598d16b16844d2771e
 ```
 ## Step 2: Understanding Git Object Structure
 I realized the issue was related to how Git organizes objects. The first two characters of the hash represent the directory, and the rest is the filename. So the full hash should be:
 *01278d6de291f04d0b47c5598d16b16844d2771e*:
 ```
-arsen@archlinux ~/C/U/M/D/t/.g/o/01 (GIT_DIR!) [128]> git cat-file -p 01278d6de291f04d0b47c5598d16b16844d2771e
+arsen@archlinux ~/DTRH/.git/objects/01 (GIT_DIR!) [128]> git cat-file -p 01278d6de291f04d0b47c5598d16b16844d2771e
 100644 blob 5c6f3ba2073706ced84050012d8eea559a7df177	image.jpg
 ```
 It's another .jpg file, let's extract it:
 ```
-arsen@archlinux ~/C/U/M/D/t/.g/o/01 (GIT_DIR!)> git cat-file -p 01278d6de291f04d0b47c5598d16b16844d2771e > extracted_image.jpg
-arsen@archlinux ~/C/U/M/D/t/.g/o/01 (GIT_DIR!)> ls
+arsen@archlinux ~/DTRH/.git/objects/01 (GIT_DIR!)> git cat-file -p 01278d6de291f04d0b47c5598d16b16844d2771e > extracted_image.jpg
+arsen@archlinux ~/DTRH/.git/objects/01 (GIT_DIR!)> ls
 278d6de291f04d0b47c5598d16b16844d2771e  extracted_image.jpg
 ```
 Let's try to run exiftool:
 ```
-arsen@archlinux ~/C/U/M/D/t/.g/o/01 (GIT_DIR!)> exiftool extracted_image.jpg
+arsen@archlinux ~/DTRH/.git/objects/01 (GIT_DIR!)> exiftool extracted_image.jpg
 ExifTool Version Number         : 13.25
 File Name                       : extracted_image.jpg
 Directory                       : .
@@ -172,7 +172,7 @@ Word Count                      : 4
 ```
 There is something found, hooray!! Lets extract it.
 ```
-arsen@archlinux ~/C/U/M/D/t/.g/o/01 (GIT_DIR!)> steghide info extracted_image.jpg
+arsen@archlinux ~/DTRH/.git/objects/01 (GIT_DIR!)> steghide info extracted_image.jpg
 "extracted_image.jpg":
   format: jpeg
   capacity: 29.3 KB
@@ -185,7 +185,7 @@ There is only 1 unused string left, let's try with it:
 
 **Coq\IP1o7hr#yyW7**
 ```
-arsen@archlinux ~/C/U/M/D/t/.g/o/01 (GIT_DIR!)> steghide info extracted_image.jpg -p "Coq\IP1o7hr#yyW7"
+arsen@archlinux ~/DTRH/.git/objects/01 (GIT_DIR!)> steghide info extracted_image.jpg -p "Coq\IP1o7hr#yyW7"
 "extracted_image.jpg":
   format: jpeg
   capacity: 29.3 KB
@@ -194,9 +194,9 @@ arsen@archlinux ~/C/U/M/D/t/.g/o/01 (GIT_DIR!)> steghide info extracted_image.jp
     encrypted: rijndael-128, cbc
     compressed: yes
 ```
-And Finally the last step!
+And finally the last step!:
 ```
-arsen@archlinux ~/C/U/M/Down the Rabbit Hole (master) [1]> cat emb2.txt
+arsen@archlinux ~/DTRH/.git/objects/01 (master) [1]> cat emb2.txt
 utflag{f0ll0w1ng_th3_wh1t3_r4bb1t_:3}⏎     
 ```
 
